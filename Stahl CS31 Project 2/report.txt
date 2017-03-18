@@ -1,0 +1,26 @@
+Shakthi Visagan
+804622954
+Howard Stahl
+CS 31
+
+Report
+
+1. 
+I had a lot of trouble figuring out the precision for the Barak case. The value comes out to be 26.175 but the required output was 26.18. Unfortunately, my output was constantly 26.17.
+Though the homework doesn't really ask for a set amount of rounding in the answer, this was still bothering me. I figured that maybe having all my constants stored in doubles and being output in doubles may have been the cause for the error.
+I also had a difficult time managing all my if-else-statements and all their respective code blocks given that all of it was condense.
+
+2. 
+The code is nearly identical for the Br-UberX and the Br-UberXL options and these cases can easily be switched between the two.
+
+Normal (shakthi,13,13,Br-UberX)
+Testing the minimum booking fee (shakthi,1,1,Br-UberX)
+Testing the empty string for customer name (,12,12,Br-UberX)
+Testing a nonpositive miles to be driven (shakthi,0,12,Br-UberX)
+Testing a nonpositive minutes to be driven (shakthi,12,0,Br-UberX)
+Testing an invalid ride type (shakthi,12,12,poop)
+Testing a very large string for the customer name (shakthipoopshakthipoopshakthipoopshakthipoopshakthipoopcarrotcake,12,12,Br-UberX)
+Testing numbers that exceed the capacity of a double (shakthi,99999999999999999999999999,0.000000000000000005,Br-UberX) Does not produce a correct output.
+Testing noninteger miles to be driven (shakthi,poop,12,12) Does not produce a correct output.
+Testing noninteger minutes to be driven (shakthi,12,poop,12) Does not produce a correct output.
+

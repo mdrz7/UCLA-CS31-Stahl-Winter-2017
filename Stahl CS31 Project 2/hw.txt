@@ -1,0 +1,101 @@
+Shakthi Visagan
+804622954
+Howard Stahl
+CS31
+Homework 2
+
+1. What is the output produced by the following program segment? Don't just run it — trace through it and figure it out by hand (which is a skill you'll need for the exams).
+	string endline = "endl";
+	cout << "endl";
+	cout << endline;
+	cout << endl;
+	cout << "endline";
+Answer:
+	endlendl
+	endline
+
+2. Consider the following program:
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+	    int len;
+
+	    cout << "Enter a number: ";
+	    cin >> len;
+
+	    for (int i = 0; i < len; i++)
+	    {
+		    for (int j = i+1; j < len; j++)
+		    {
+		        cout << " ";
+		    }
+		    cout << "#" << endl;
+	    }
+	}
+Answer:
+	This prints out a receding diagonal line of n pound marks starting at the nth position where n is inputted by the user all the way to the first position.
+
+3. 
+#include <iostream>
+
+int main() {
+	int len;
+
+	std::cout << "Enter a number: ";
+	std::cin >> len;
+
+	for (int i = 0; i < len; i++) {
+		int j = i + 1;
+		while (j < len) {
+			std::cout << " ";
+			++j;
+		}
+		std::cout << "#" << std::endl;
+	}
+	return(0);
+}
+
+4.
+#include <iostream>
+
+int main() {
+	int len;
+
+	std::cout << "Enter a number: ";
+	std::cin >> len;
+
+	int i = 0;
+	if (i < len) {
+		do {
+			int j = i + 1;
+			while (j < len) {
+				std::cout << " ";
+				++j;
+			}
+			std::cout << "#" << std::endl;
+			++i;
+		} while (i < len);
+	}
+	return(0);
+}
+
+5.
+	switch (weekday) {
+		case (1):
+			std::cout << "rainy days and mondays get me down";
+			break;
+		case (2):
+			std::cout << "ruby tuesday";
+			break;
+		case (6): 
+			std::cout << "wonderful weekend";
+			break;
+		case (7):
+			std::cout << "wonderful weekend";
+			break;
+		default:	
+			std::cout << "regular day";
+			break;
+		}
