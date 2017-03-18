@@ -1,0 +1,127 @@
+Shakthi Visagan
+Howard Stahl
+Toni
+CS 31
+Project 4
+
+1. I found that unionWithNoDuplicates was the most difficult function to code. I also kept having to catch myself from changing conditional statements that checked if two things
+were equal to each other from "=" to "==" since the first one changes the value instead of checking two values. I also had trouble mapping out exactly what was happening in shiftRight 
+function. I kept having to write it out to fully understand what I wanted and what I wanted my code to execute. I got a bit lazy near the end so the union... function took me a while to 
+code. I tried making it so that I could use one function's logic in another, which is what I did with locateMinimum and findlast... Over this project was not so bad.
+
+2. 
+
+std::string a[6] = { "alpha", "beta", "gamma", "gamma", "beta", "delta" };
+	std::string b[6] = { "delta", "gamma", "beta", "alpha", "beta", "alpha" };
+	std::string h[7] = { "samwell", "jon", "margaery", "daenerys", "", "tyrion", "margaery" };
+
+	std::string c[8] = { "aardvark", "aardvark", "baboon", "computer", "xylophone", "xylophone", "yes", "xenophobia" };
+
+	std::string people[5] = { "samwell", "jon", "margaery", "daenerys", "tyrion" };
+	std::string data[4] = { "howard", "ucla", "howard", "ucla" };
+
+	std::string folks[8] = { "samwell", "jon", "margaery", "daenerys", "tyrion", "sansa", "howard", "cersei" };
+
+	int answer;
+
+	std::string output[6] = { " ", " ", " ", " ", " ", " " };
+	int outputSize = 6;
+
+	assert(locateMinimum(a, 3) == 0); // alpha is the minimal string and is at a[0]
+	assert(locateMinimum(b, 3) == 2); // beta is the minimal string and is at b[2]
+
+	assert(locateMinimum(c, 3) == 0); // aardvark is the minimal string and the smallest index it appears in is 0
+	assert(locateMinimum(c, 8) == 0); // aardvark is the minimal string and the smallest index it appears in is 0
+	assert(locateMinimum(c, -1) == -1); // returns -1 if n <= 0
+	assert(locateMinimum(c, -1) == -1); // returns -1 if n <= 0
+	//assert(locateMinimum(c, 9) == 0); // undefined behavior                    
+
+	assert(locateMinimum(people, 5) == 3); // daenerys is the minimal string and is at people[3]                                
+
+	
+	assert(findLastOccurrence(a, 5, "beta") == 4); // beta is at the a[1] and at a[4] so 4 should be returned
+	assert(findLastOccurrence(b, 3, "beta") == 2); // beta is at only the b[2] so the 2 position should be returned
+
+	assert(findLastOccurrence(folks, 5, "howard") == -1); // should return -1 (not found)
+	assert(findLastOccurrence(folks, 0, "howard") == -1); // should return -1 when n <= 0 
+	assert(findLastOccurrence(c, -1, "howard") == -1); // should return -1 when n <= 0 
+	//assert(findLastOccurrence(c, 9, "howard") == -1); // undefined behavior 
+	assert(findLastOccurrence(c, 2, "aardvark") == 1); // aardvark is at the c[0] and c[1] positions so 1 should be returned
+
+	assert(findLastOccurrence(data, 4, "howard") == 2); // howard occurs at data[0] and data[2] positions so 2 should be returned
+	assert(findLastOccurrence(data, 4, "cs31") == -1); // should return -1 (not found)
+	
+
+	assert(hasNoDuplicates(a, 3) == true); // array a considering only the first 3 elements has no duplicates
+	assert(hasNoDuplicates(b, 6) == false); // array b has several duplicates
+
+	assert(hasNoDuplicates(c, 1) == true); // array c considering only the first element has no duplicates
+	assert(hasNoDuplicates(c, 0) == true); // array c considering the empty array has no dubplicate elements
+	assert(hasNoDuplicates(c, -1) == false); // should return false since n < 0
+
+	assert(hasNoDuplicates(people, 5) == true); // array people has no duplicates
+	assert(hasNoDuplicates(people, 0) == true); // array people considering the empty array has no duplicate elements
+	
+
+	assert(isInIncreasingOrder(a, 3) == true); // each element is lexicographically larger than the one before it in the first 3 elements of a
+	assert(isInIncreasingOrder(a, 6) == false); // the last couple of elements in a aren't lexicographically ordered 
+
+	assert(isInIncreasingOrder(c, 0) == true); // no pair of values exist that fail the criteria
+	assert(isInIncreasingOrder(c, 1) == true); // no pair of values exist that fail the criteria
+	assert(isInIncreasingOrder(c, 7) == true); // the first 7 elements of c are ordered lexicographically 
+	assert(isInIncreasingOrder(c, 8) == false); // the last pair of elements are not lexicographically ordered
+
+	assert(isInIncreasingOrder(people, 5) == false); // these elements are not in such an order
+	
+
+	//unionWithNoDuplicates(a, 6, b, 2, output, outputSize); // simple example to test 
+	//assert(outputSize == 4);
+	//assert(output[0] == "alpha");
+
+	unionWithNoDuplicates(folks, 3, b, 2, output, outputSize); // simple example to test 
+	assert(outputSize == 5);
+	assert(output[0] == "samwell");
+
+	
+
+	//answer = shiftRight(h, 6, 1, "foobar");
+	//assert(answer == 5);
+	//assert(h[0] == "foobar");
+	//std::cout << "-" << std::endl;
+
+	//answer = shiftRight(people, 5, 3, "foo");
+	//assert(answer == 2);
+	//assert(people[2] == "foo");
+	//assert(people[3] == "samwell");
+	//std::cout << "-" << std::endl;
+
+	//answer = shiftRight(folks, 3, 1, "poop");
+	//assert(answer == 2);
+	//assert(folks[0] == "poop");
+	//assert(folks[1] == "samwell");
+	//std::cout << "-" << std::endl;
+
+	//assert(flipAround(people, 3) == 1);
+	//std::cout << "-" << std::endl;
+	//assert(flipAround(data, 4) == 2);
+	//std::cout << "-" << std::endl;
+	//
+	//assert(flipAround(c, -1) == 0); // various cases to test
+	//std::cout << "-" << std::endl;
+	//assert(flipAround(b, 0) == 0);
+	//std::cout << "-" << std::endl;
+	//assert(flipAround(b, 1) == 0);
+	//std::cout << "-" << std::endl;
+	//assert(flipAround(c, 1) == 0);
+	//std::cout << "-" << std::endl;
+	//assert(flipAround(c, 2) == 1);
+	//std::cout << "-" << std::endl;
+	//assert(flipAround(c, 3) == 1);
+	//std::cout << "-" << std::endl;
+	//assert(flipAround(folks, 8) == 4);
+	//std::cout << "-" << std::endl;
+
+	std::cout << "-" << std::endl;
+	std::cout << "All tests succeeded" << std::endl;
+	return(0);
+}
