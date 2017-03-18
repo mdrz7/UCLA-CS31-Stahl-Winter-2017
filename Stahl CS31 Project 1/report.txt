@@ -1,0 +1,24 @@
+Shakthi Visagan
+Stahl
+CS 31
+Project 1
+
+For number 5, I inputed 1, 1, 4, and the program would output that both I and the main opponent received 25.0% of the votes needed to win. 
+It also noted that I won, which is incorrect and a nonsensical result. 
+This can be easily fixed if the number of votes needed to win was rather coded as the sum of my votes and the main opponent's votes and the victory was then declared from the result of those percentages.
+
+The logic error I introduced was in lines 20 and 21, where I changed the percentage multiplier from 100.0 to 50.0. 
+This obviously messes up the percentage calculations as units of percentage are 100% not 50%.
+For example, when I input 1, 1, and 2,  as the inputs, I get half the expected percentages and the completely wrong logical interpretation of inputs, and a completely wrong output.
+Constants like these should be stored in a variable and then called later in the code to be used.
+In the Bell Lab Guides for C and C++ coding standards, it is recommended that they be stored in the top of the file in whats known as a constant macro. 
+This helps reduce obfuscation and increases readability of the code all the while reducing errors being accidentally introduced.
+
+The compile error I introduced was commenting out, or introducing two slashes to the 5th line of the code "using namespace std;." 
+Essentially "using namespace std;" was changed to "// using namespace std;."
+When I Ctrl + F5 or run without debugging, Microsoft Visual Studio displays an error message saying there were build errors and prompts me if I would like to continue by running a previous build that had no errors.
+Specifically, the errors all declare the same thing (amongst some others), "undeclared identifier," for all the cin's and all the cout's as well as an error for anything before double colons like ios.
+When I remove the namespace std from the code, the container or directory or folder that contains all the identifiers and other named variables or functions is no longer being referred to and hence all the variables and functions do not have the name that should be intended.
+Using namespaces helps us have less obfuscated code, as not using it would mean we would have to declare the namespace everytime we try to use parts of it. 
+
+
