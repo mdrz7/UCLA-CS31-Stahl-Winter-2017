@@ -26,7 +26,11 @@ int main() {
 	nemo.printMemory(); // prints "bcd"
 	nemo.forget();
 	nemo.printMemory(); // prints "..."
-	nemo.~Goldfish();
+	// nemo.~Goldfish();
+	// ** Error in `./a.out': double free or corruption (fasttop): 0x0000000001b71010 ***
+	// Aborted(core dumped)
+	// avoid using the destructor
+	nemo.printMemory();
 	std::cout << " " << std::endl;
 
 	std::cout << "done" << std::endl;
@@ -76,10 +80,12 @@ void Goldfish::forget() {
 }
 
 Goldfish::~Goldfish() {
+	forget();
 	delete[] m_memory;
 }
 
 void Goldfish::printMemory() const {
+	std::cout << "~~~~~~~~~~" << std::endl;
 	for (int i = 0; i < m_capacity; ++i) {
 		std::cout << m_memory[i] << std::endl;
 	}
