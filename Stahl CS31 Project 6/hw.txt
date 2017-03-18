@@ -1,4 +1,3 @@
-804622954
 Shakthi Visagan
 Stahl Toni
 CS 31 Project 6
@@ -33,17 +32,17 @@ Answer (Bugs will be written in red):
 4. Dereferencing the pointer, that is the first element, and making it equal to the element in arr[1].
 a. *ptr = arr[0] = arr[1] = 1.
 5. The line, *ptr + 1 = arr[ 0 ] * 10; , is incorrectly written.
-a. It should read as, *(ptr + 1) = arr[ 0 ] * 10; , the reason being that *ptr gives us the value at the address location stored in ptr which can’t be modified in that manner. Using parentheses clarifies what we want.
+a. It should read as, *(ptr + 1) = arr[ 0 ] * 10; , the reason being that *ptr gives us the value at the address location stored in ptr which canâ€™t be modified in that manner. Using parentheses clarifies what we want.
 6.  ptr += 2; is the same as writing ptr = ptr + 2;. This is equivalent to writing that ptr = &arr[2].
-7. It doesn’t make sense to use ptr as an array. We should dereference it since all ptr is is a pointer to an address location.
+7. It doesnâ€™t make sense to use ptr as an array. We should dereference it since all ptr is is a pointer to an address location.
 8. The line,  ptr[0] = arr[ 1 ] * 10; , is correctly written.
 a. It should read as,  *ptr = arr[ 1 ] * 10; , the reason being that *ptr will give us the value stored at the address location of arr[2] which is what the user wants. It is also worth noting that ptr is not an array.
-9. It still doesn’t make sense to use ptr as an array. We should dereference it since all ptr is is a pointer to an address location.
+9. It still doesnâ€™t make sense to use ptr as an array. We should dereference it since all ptr is is a pointer to an address location.
 10. The line,  ptr[1] = 1000; , is correctly written.
 a. It should read as,  *(ptr +1) = 1000; , the reason being that *(ptr + 1) will now will give us the value stored at the address location of arr[3] which is what the user wants. 
 11. As of right now, ptr points to the address location of arr[2]. We want, however, by the end of the program for it to point to arr[3].
 a. We can add a line, ptr += 1; to do this for us.
-12. Finally, for the loop, we don’t want to exclude the first element of the array so we will subtract one element, that is, move down the allocated for the memory, AFTER we access it, not before.
+12. Finally, for the loop, we donâ€™t want to exclude the first element of the array so we will subtract one element, that is, move down the allocated for the memory, AFTER we access it, not before.
 a. This can be fixed by moving, ptr--; ,  after the cout.
 13. The new program is written down below on a new page.
 
@@ -228,7 +227,7 @@ c. The biggest function is correct, but the main function has a problem.  Explai
     }
 
 Answer (Bugs will be written in red):
-1. The error exists within declaring the pointer. It’s better to initialize the pointer with a pre-existing address. Fixed code is presented below on a new page.
+1. The error exists within declaring the pointer. Itâ€™s better to initialize the pointer with a pre-existing address. Fixed code is presented below on a new page.
 
 
 
@@ -421,8 +420,26 @@ The array constructed in the function call ceases to exit after said function ca
 2. 
 
 1. string * fp; 	
- 	f. declares a pointer variable to point to a variable of type string 2. string fish[ 5 ];g. declares a five element array of string  	3. fp = &fish[ 4 ];   	a. sets a pointer variable to the last element of an array of five strings  	4. *fp = "salmon";b. sets the string pointed to by a pointer variable to the value "salmon" 	5. fp -= 3;   	d. moves the pointer fp back three strings in the array it points to  	6. *(fp + 3) = "salmon";c. sets the fourth element of an array pointed to by the variable fp to the value "salmon"7. fp[ 0 ] = "salmon";b. sets the string pointed to by a pointer variable to the value "salmon" 	8. bool b = (fp == fish);e. initializes a boolean to true if the pointer variable fp points to the string at the start of the fish array, false otherwise  9. bool b = (*fp == *(fp + 1));   	h. initializes a boolean to true if fp points to a string whose value matches the string immediately following the string pointed to by fp,  
-false otherwise
+ 	
+f. declares a pointer variable to point to a variable of type string 
+2. string fish[ 5 ];
+g. declares a five element array of string  	
+3. fp = &fish[ 4 ];   	
+a. sets a pointer variable to the last element of an array of five strings  	
+4. *fp = "salmon";
+b. sets the string pointed to by a pointer variable to the value "salmon" 	
+5. fp -= 3;   	
+d. moves the pointer fp back three strings in the array it points to  	
+6. *(fp + 3) = "salmon";
+c. sets the fourth element of an array pointed to by the variable fp to the value "salmon"
+7. fp[ 0 ] = "salmon";
+b. sets the string pointed to by a pointer variable to the value "salmon" 	
+8. bool b = (fp == fish);
+e. initializes a boolean to true if the pointer variable fp points to the string at the start of the fish array, false otherwise  
+9. bool b = (*fp == *(fp + 1));   	
+h. initializes a boolean to true if fp points to a string whose value matches the string immediately following the string pointed to by fp,  
+false otherwise
+
 
 
 
