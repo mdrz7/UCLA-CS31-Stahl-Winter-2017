@@ -1,10 +1,9 @@
 Shakthi Visagan
-804622954
 Howard Stahl
 CS31
 Homework 2
 
-1. What is the output produced by the following program segment? Don't just run it — trace through it and figure it out by hand (which is a skill you'll need for the exams).
+1. What is the output produced by the following program segment? Don't just run it â€” trace through it and figure it out by hand (which is a skill you'll need for the exams).
 	string endline = "endl";
 	cout << "endl";
 	cout << endline;
