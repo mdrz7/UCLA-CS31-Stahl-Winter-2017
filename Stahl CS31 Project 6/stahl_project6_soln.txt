@@ -1,0 +1,100 @@
+Problem 1:
+
+a.  First, because of the operators' order of precedence, the expression    *ptr + 1 = arr[ 0 ] * 10;    means     (*ptr) + 1 = arr[ 0 ] * 10;   .  The expression    (*ptr) + 1     evaluates to the int 2, not an int l-value variable that can be assigned to.   When corrected to      *(ptr+1) = arr[ 0 ] * 10;      , the expression means     *(&arr[1]) = 20;   , which means         arr[1] = 20;     
+
+Second, the while loop doesn't access      arr[2]      and tries to access       arr[-1]       .  One possible fix is
+
+        ptr += 2;
+        while (ptr >  arr)
+        {
+            ptr--;
+            cout << ' ' << *ptr;         // print values
+        }
+
+b.  The function findLastZero puts the correct value into the variable p, but p is a copy of the caller's variable ptr, so findLastZero has no effect on ptr.  The parameter p must be passed by reference, not by value:
+
+void findLastZero( int arr[], int n, int* & p );
+
+c.  The declaration int * p; declares p to be a pointer to int, but leaves it uninitialized - it does not point to any particular int.  That uninitialized pointer is copied into the parameter resultPtr.  In the expression       *resultPtr = value1;      or    *resultPtr = value2;      , the attempt to dereference the uninitialized resultPtr pointer leads to undefined behavior.
+
+A fix would be to make sure makeBiggest is passed a valid pointer; one possibility is:
+
+int i;
+int * p = & i ;
+
+d.  The test    str1 != 0     is asking if the str1 pointer itself has a value different from the null pointer.  (The integer constant 0 used in a context where a pointer is required means the null pointer.)   The test we want, though, is to see if the character pointed to by str1 is different from the zero byte that marks the end of a C-string.  (The same applies to str2.)  Similarly, the test      str1 != str2      is asking whether those two pointers have different values (i.e., they point to different places).  But what should be tested is whether the characters they point to have different values.  (The same applies to    str1 == str2    as well.)
+
+The corrected function body is:
+
+while ( *str1 != 0  &&  *str2 != 0)        // '\0' instead of 0 is also OK
+{
+    if (* str1 != * str2)
+       return false;
+
+    str1++;
+    str2++;
+}
+return( * str1 == * str2 );
+
+e.  The storage for the local variable arr goes away when the function computeFibonacciSequence returns.  But that function returns a pointer to that storage.  Attempting to follow that pointer in the main routine (implied by ptr[ i ]) yields undefined behavior.
+
+2.      1-f    2-g    3-a    4-b    5-d    6-c    7-b     8-e    9-h
+
+
+3.
+
+
+diff=1	(see notes 2 and 5 below)
+
+4	(see notes 6 and 7 below)
+
+79	(see notes 4 and 6 below)
+
+5	(see note 7 below)
+
+9	(see note 1 below)
+
+-1	(see notes 2 and 3 below)
+
+19
+
+minimart is called with pointers to array[0] and array[2].  It returns a pointer to whichever of the ints pointed to has a smaller value.  Since
+array[2] has the smaller value, the function returns &array[2].  The expression ptr[1] = 9 sets array[3] to 9.
+ptr += 2; sets ptr to &array[4].
+*ptr = -1; sets array[4] to -1.
+*(array+1) = 79; sets array[1] to 79.
+&array[5] - &array[4] is 1.
+The swap1 function swaps its copies of the pointers passed in to it, with no effect on the ints pointed to.
+The swap2 function swaps the ints pointed to.
+4.
+
+void deleteCapitals(char* source)
+{
+    char* destination = source;
+    for ( ; *source != '\0'; source++)
+    {
+        if (*source < 'A'  ||  *source > 'Z')
+        {
+           *destination = *source;
+           destination++;
+        }
+    }
+    *destination = '\0';  // Don't forget the zero byte at the end
+}
+
+or
+
+void deleteCapitals(char* source)
+{
+    char* destination = source;
+    while (*source != '\0')
+    {
+       if (*source < 'A'  ||  *source > 'Z')
+       {
+          *destination = *source;
+          destination++;
+       }
+       source++;
+    }
+    *destination = '\0';  // Don't forget the zero byte at the end
+}
